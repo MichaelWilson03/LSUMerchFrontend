@@ -1,32 +1,44 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { useOutletContext } from "react-router-dom";
 // import { useState } from "react";
 
-const Nav = () => {
+const Nav = ({ setToken, setUser, topOfHome }) => {
   function loggedUser() {
     const user = localStorage.getItem("token");
+
+    const navigate = useNavigate();
+
+    const handleNavigateHome = () => {
+      navigate("/");
+      if (topOfHome.current) {
+        topOfHome.current.scrollIntoView({ top: 0, behavior: "smooth" });
+      }
+    };
+
     if (user) {
       return (
         <div id="nav-link1">
           <div className="user-nav">
-            <Link to="/" style={{ textDecoration: "none" }}>
-              Home
-            </Link>
-            <Link to="/all-products" style={{ textDecoration: "none" }}>
+            <div onClick={() => handleNavigateHome()}>Home</div>
+            <div onClick={() => navigate("/all-products")}>
               Shop All Products
-            </Link>
-            <Link
-              to="/"
-              style={{ textDecoration: "none" }}
+            </div>
+            <div
               onClick={() => {
                 localStorage.removeItem("token");
                 setToken("");
                 setUser({});
-                window.location.reload();
+                navigate("/");
+                if (topOfHome.current) {
+                  topOfHome.current.scrollIntoView({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }
               }}
             >
               Logout
-            </Link>
+            </div>
           </div>
         </div>
       );
@@ -34,16 +46,11 @@ const Nav = () => {
       return (
         <div id="nav-link2">
           <div className="non-user-nav">
-            <Link to="/" style={{ textDecoration: "none" }}>
-              Home
-            </Link>
-
-            <Link to="/all-products" style={{ textDecoration: "none" }}>
+            <div onClick={() => handleNavigateHome()}>Home</div>
+            <div onClick={() => navigate("/all-products")}>
               Shop All Products
-            </Link>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Login/Register
-            </Link>
+            </div>
+            <div onClick={() => navigate("/login")}>Login/Register</div>
           </div>
         </div>
       );

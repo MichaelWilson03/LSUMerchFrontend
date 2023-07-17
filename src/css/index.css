@@ -137,10 +137,17 @@
   padding: 10px;
 }
 
-.non-user-nav > a,
-.user-nav > a {
+.non-user-nav > div,
+.user-nav > div {
   min-width: 270px;
   text-align: center;
+  color: #3c1053;
+}
+
+.non-user-nav > div:hover,
+.user-nav > div:hover {
+  color: red;
+  cursor: pointer;
 }
 
 .nav-link1 {
@@ -674,6 +681,7 @@
   padding: 20px;
   background-color: #f2f2f2;
   border-radius: 4px;
+  font-family: arial;
 }
 
 .new-product-title {
@@ -692,6 +700,18 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  background-color: white;
+}
+
+.featured-select {
+  display: flex;
+  align-items: center;
+}
+
+.featured-select > input {
+  position: relative;
+  top: 4px;
+  margin-left: 10px;
 }
 
 .new-product-button {
