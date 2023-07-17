@@ -24,8 +24,7 @@ const Admin = () => {
         <button className="admin-button" onClick={manageProducts}>
           Edit/Delete Products
         </button>
-      </div>
-      <div className="admin-section">
+
         <h1 className="admin-section-title">Order Management</h1>
         <button className="admin-button" onClick={manageOrders}>
           Update Orders

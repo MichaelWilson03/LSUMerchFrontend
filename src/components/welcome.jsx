@@ -6,6 +6,7 @@ import { addToCart } from "../components/utils/cartFunctions";
 
 import { inCartToast } from "../routes/root";
 import { useEffect, useState } from "react";
+import LoadingState from "../components/loading";
 
 import "../css/homepage.css";
 
@@ -27,7 +28,7 @@ export default function Welcome() {
   }, []);
 
   if (!products) {
-    return <></>;
+    return <LoadingState />;
   }
 
   return (

@@ -18,6 +18,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import LoadingState from "../components/loading";
 
 library.add(faStar);
 
@@ -128,6 +129,7 @@ export default function Products() {
   const singleProduct = async () => {
     try {
       setLoading(true);
+
       const products = await getAllProducts(productId);
 
       const product = products.find((product) => product.id == productId);
@@ -145,7 +147,7 @@ export default function Products() {
   }, [productId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <LoadingState />;
   }
 
   return (

@@ -4,7 +4,9 @@ import { createProduct } from "../api";
 import ImageUpload from "./imageUpload";
 
 import "../css/productForm.css";
+import { Button } from "@mui/material";
 
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 const NewProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -18,6 +20,29 @@ const NewProduct = () => {
   const { user, token, products, setProducts } = useOutletContext();
 
   const navigate = useNavigate();
+  const theme = createTheme({
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#3c1053",
+            color: "white",
+            textTransform: "none",
+            borderRadius: "4px",
+            padding: "8px 16px",
+            fontWeight: "bold",
+            transition: "background-color 0.3s ease-in-out",
+            fontSize: "16px",
+            margin: "8px 0",
+
+            "&:hover": {
+              backgroundColor: "#d29f13",
+            },
+          },
+        },
+      },
+    },
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -51,6 +76,7 @@ const NewProduct = () => {
   return (
     <div className="new-product-container">
       <h1 className="new-product-title">Add Product to Inventory</h1>
+
       <form onSubmit={handleSubmit} className="new-product-form">
         <input
           className="new-product-input"
@@ -105,9 +131,9 @@ const NewProduct = () => {
            />
         </label>
         <ImageUpload imageURL={imageURL} setImageURL={setImageURL} />
-        <button className="new-product-button" type="submit">
+        <Button className="new-product-button" type="submit" theme={theme}>
           Create Product
-        </button>
+        </Button>
       </form>
     </div>
   );

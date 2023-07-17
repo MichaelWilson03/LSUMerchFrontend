@@ -10,6 +10,7 @@ import { createTheme } from "@mui/material/styles";
 import toast, { Toaster } from "react-hot-toast";
 
 export const inCartToast = () => toast("Item Already In Cart");
+import { LoadingState } from "../components/loading";
 
 //All Global state to be saved in this file and then exported to other components via Outlet Context
 
@@ -108,7 +109,7 @@ const Root = () => {
   }, [token]);
 
   if (isLoadingProducts) {
-    return <>Loading...</>;
+    return <LoadingState />;
   }
 
   return (
