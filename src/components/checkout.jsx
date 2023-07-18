@@ -1,7 +1,12 @@
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "../css/checkout.css";
 import { useEffect, useState } from "react";
-import { removeFromCart, getProfile, updateCartItemQuantity } from "../api";
+import {
+  removeFromCart,
+  getProfile,
+  updateCartItemQuantity,
+  stripeCheckout,
+} from "../api";
 import { IconButton } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { calculateCartPrice } from "../components/utils/cartFunctions";
@@ -9,6 +14,8 @@ import { calculateCartPrice } from "../components/utils/cartFunctions";
 const Checkout = () => {
   const { user, setUser, cart, setCart, token } = useOutletContext();
   const [productList, setProductList] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (cart?.products) {
@@ -123,7 +130,23 @@ const Checkout = () => {
           </div>
         </div>
         <div className="checkout-button">
-          <button>Proceed to Payment</button>
+          {user.id ? (
+            <button
+              onClick={() =>
+                stripeCheckout(
+                  Number(user.cart.totalPrice.slice(1)) * 100,
+                  cart.id,
+                  token
+                )
+              }
+            >
+              Proceed to Payment
+            </button>
+          ) : (
+            <button onClick={() => navigate("/login")}>
+              Log In to Complete Purchase
+            </button>
+          )}
         </div>
       </div>
     </>

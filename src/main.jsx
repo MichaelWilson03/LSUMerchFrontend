@@ -16,7 +16,9 @@ import ErrorPage from "./error";
 import ManageOrders from "./components/manageorders";
 import AllProducts from "./components/allproducts";
 import CreateReview from "./components/newreview";
-import EditReview from "./components/editreview"
+import EditReview from "./components/editreview";
+import OrderConfirmation from "./components/orderConfirmation";
+import ManageUsers from "./components/manageUsers";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,10 @@ const router = createBrowserRouter([
         element: <ManageOrders />,
       },
       {
+        path: "/manage-users",
+        element: <ManageUsers />,
+      },
+      {
         path: "/all-products",
         element: <AllProducts />,
       },
@@ -78,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "/:productId/editreview",
         element: <EditReview />,
+      },
+      {
+        path: "confirmation/:orderId",
+        element: <OrderConfirmation />,
       },
     ],
   },
