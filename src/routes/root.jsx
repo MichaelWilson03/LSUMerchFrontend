@@ -5,13 +5,49 @@ import Header from "../components/header";
 import Nav from "../components/nav";
 import { useEffect, useState, useRef } from "react";
 import { getAllProducts, getOrders, getProfile, createNewCart } from "../api";
-import { createTheme } from "@mui/material/styles";
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+} from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
+
 import { addLoggedOutCartToUser } from "../components/utils/cartFunctions";
 
 import toast, { Toaster } from "react-hot-toast";
 
 export const inCartToast = () => toast("Item Already In Cart");
 import LoadingState from "../components/loading";
+
+let theme = createTheme({
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#3c1053",
+          color: "white",
+          textTransform: "none",
+          fontSize: "1rem",
+
+          "&:hover": {
+            backgroundColor: "#d29f13",
+            color: "white",
+            textTransform: "none",
+          },
+        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        root: {
+          cursor: "pointer",
+        },
+      },
+    },
+  },
+});
+
+theme = responsiveFontSizes(theme);
 
 //All Global state to be saved in this file and then exported to other components via Outlet Context
 
@@ -24,27 +60,6 @@ const Root = () => {
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
 
   const topOfHome = useRef(null);
-
-  const theme = createTheme({
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            backgroundColor: "#3c1053",
-            color: "white",
-            textTransform: "none",
-            fontSize: "1rem",
-
-            "&:hover": {
-              backgroundColor: "#d29f13",
-              color: "white",
-              textTransform: "none",
-            },
-          },
-        },
-      },
-    },
-  });
 
   //Use Effect for Fetching all Products and initial user when page first loads
   useEffect(() => {
@@ -116,18 +131,20 @@ const Root = () => {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Header user={user} setUser={setUser} setToken={setToken} cart={cart} />
       <Nav
         user={user}
         setUser={setUser}
         setToken={setToken}
         topOfHome={topOfHome}
+        createTheme={createTheme}
       />
       <div id="main">
         <Outlet
           context={{
-            theme,
+            createTheme,
             products,
             setToken,
             token,
@@ -155,7 +172,7 @@ const Root = () => {
           position="bottom-center"
         />
       </div>
-    </>
+    </ThemeProvider>
   );
 };
 

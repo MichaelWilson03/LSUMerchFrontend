@@ -51,64 +51,55 @@ export default function AllProducts() {
   return (
     <div id="all-products">
       <div className="categories-container">
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("All")}
-          >
-            All Products
-          </Button>
-        </ThemeProvider>
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("Clothing")}
-          >
-            Clothing
-          </Button>
-        </ThemeProvider>
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("Accessories")}
-          >
-            Accessories
-          </Button>
-        </ThemeProvider>
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("Memorabilia")}
-          >
-            Memorabilia
-          </Button>
-        </ThemeProvider>
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("Baby")}
-          >
-            Baby
-          </Button>
-        </ThemeProvider>
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("Household")}
-          >
-            Household
-          </Button>
-        </ThemeProvider>
-        <ThemeProvider theme={theme}>
-          <Button
-            className="category-button"
-            onClick={() => handleCategorySelect("Featured")}
-          >
-            Featured
-          </Button>
-        </ThemeProvider>
-      </div>
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("All")}
+        >
+          All Products
+        </Button>
 
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("Clothing")}
+        >
+          Clothing
+        </Button>
+
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("Accessories")}
+        >
+          Accessories
+        </Button>
+
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("Memorabilia")}
+        >
+          Memorabilia
+        </Button>
+
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("Baby")}
+        >
+          Baby
+        </Button>
+
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("Household")}
+        >
+          Household
+        </Button>
+
+        <Button
+          className="category-button"
+          onClick={() => handleCategorySelect("Featured")}
+        >
+          Featured
+        </Button>
+      </div>
       <div ref={productContainer} className="cards-container">
         {displayedProducts.length > 0 ? (
           displayedProducts.map((product) => (
@@ -125,25 +116,23 @@ export default function AllProducts() {
               />
               <div className="product-price">Price: {product.price}</div>
 
-              <ThemeProvider theme={theme}>
-                <Button
-                  className="product-btn"
-                  onClick={(e) =>
-                    addToCart(
-                      e,
-                      product,
-                      user,
-                      setUser,
-                      cart,
-                      setCart,
-                      token,
-                      inCartToast
-                    )
-                  }
-                >
-                  Add to Cart
-                </Button>
-              </ThemeProvider>
+              <Button
+                className="product-btn"
+                onClick={(e) =>
+                  addToCart(
+                    e,
+                    product,
+                    user,
+                    setUser,
+                    cart,
+                    setCart,
+                    token,
+                    inCartToast
+                  )
+                }
+              >
+                Add to Cart
+              </Button>
             </div>
           ))
         ) : (

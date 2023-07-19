@@ -1,11 +1,12 @@
 import { Link, useOutletContext, useParams } from "react-router-dom";
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, useTheme } from "@mui/material";
 import { deleteReview } from "../api";
 import "../css/account.css";
 import { WidthFull } from "@mui/icons-material";
 
 const Account = () => {
-  const { user, setToken, setUser, token, theme } = useOutletContext();
+  const { user, setToken, setUser, token } = useOutletContext();
+  const theme = useTheme();
 
   function admin() {
     window.location.href = "/admin";
@@ -17,8 +18,9 @@ const Account = () => {
     setUser({});
   }
 
-  async function handleDelete(productId) {
-    const result = await deleteReview(token, productId);
+  function handleDelete(productId) {
+    const token = localStorage.getItem("token");
+    const result = deleteReview(token, productId);
     console.log(result);
   }
 
@@ -26,7 +28,7 @@ const Account = () => {
     <div className="account-page">
       {user.isAdmin && (
         <div className="admin-dashboard">
-          <Button onClick={admin} variant="contained" theme={theme}>
+          <Button onClick={admin} variant="contained">
             Admin Dashboard
           </Button>
         </div>
@@ -108,11 +110,11 @@ const Account = () => {
         ) : (
           <div className="no-reviews">No reviews found.</div>
         )}
-      </div>
-      <div className="logout-button">
-        <Button onClick={handleLogout} variant="outlined" theme={theme}>
-          Logout
-        </Button>
+        <div className="logout-button">
+          <Button onClick={handleLogout} variant="outlined">
+            Logout
+          </Button>
+        </div>
       </div>
     </div>
   );

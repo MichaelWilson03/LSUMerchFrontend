@@ -131,18 +131,17 @@ export default function Login() {
                 </Alert>
               </Stack>
             ) : null} */}
-        <ThemeProvider theme={theme}>
-          <Button
-            className="log-in"
-            type="submit"
-            onClick={handleLogin}
-            variant="contained"
-            color="secondary"
-          >
-            Login
-          </Button>
-          {error}
-        </ThemeProvider>
+
+        <Button
+          className="log-in"
+          type="submit"
+          onClick={handleLogin}
+          variant="contained"
+          color="secondary"
+        >
+          Login
+        </Button>
+        {error}
       </FormGroup>
       <div className="new-register">
         No Account?

@@ -1,8 +1,8 @@
 .account-page {
   padding: 20px;
   margin-bottom: 20px;
-  width: 70%;
-  /* margin: 0 auto; */
+  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@
 }
 
 .order-history {
-  width: 70%;
+  width: 100%;
 }
 
 .order-history h1,
@@ -92,4 +92,51 @@
   list-style-type: none;
   color: black;
   text-align: center;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .account-page {
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .account-heading {
+    font-size: 30px;
+  }
+
+  .account-details p {
+    font-size: 16px;
+  }
+
+  .order-history h1,
+  .my-reviews h1 {
+    font-size: 18px;
+  }
+
+  .order,
+  .review {
+    padding: 10px;
+  }
+
+  .order-id span,
+  .order-status span,
+  .product-quantity span,
+  .order-price span,
+  .review-rating span,
+  .review-date span {
+    font-size: 16px;
+  }
+
+  .review-product {
+    font-size: 16px;
+  }
+
+  .review-message {
+    font-size: 16px;
+  }
+
+  .logout-button {
+    font-size: 16px;
+  }
 }

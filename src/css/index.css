@@ -17,25 +17,25 @@
   font-weight: normal;
 }
 
-#website-colors {
+:root {
   /* WOfficial LSU Colors from:
   https://itservice.lsu.edu/TDClient/51/OCUR/KB/ArticleDet?ID=430; */
 
   /* Primary Colors */
-  color: #461d7c; /*Offical LSU Purple*/
-  color: #fdd023; /*Official LSU Gold*/
+  --lsu-purple: #461d7c; /*Offical LSU Purple*/
+  --lsu-gold: #fdd023; /*Official LSU Gold*/
 
   /* Tonal Palette */
-  color: #3c1053; /*Corporate Purple*/
-  color: #a39aac; /*Light Purple*/
-  color: #d29f13; /*Corporate Gold*/
-  color: #f1eedb; /*Light Gold*/
+  --corporate-purple: #3c1053; /*Corporate Purple*/
+  --light-purple: #a39aac; /*Light Purple*/
+  --corporate-gold: #d29f13; /*Corporate Gold*/
+  --light-gold: #f1eedb; /*Light Gold*/
 
   /* Neutral Palette */
-  color: #d0d0ce; /*Light Gray*/
-  color: #999999; /* 50% Gray*/
-  color: #333333; /* Process Black */
-  color: #8c734a; /*LSU Metallic Gold*/
+  --light-gray: #d0d0ce; /*Light Gray*/
+  --gray-50: #999999; /* 50% Gray*/
+  --process-black: #333333; /* Process Black */
+  --lsu-metallic-gold: #8c734a; /*LSU Metallic Gold*/
 }
 
 #root {
@@ -46,18 +46,19 @@
 }
 
 #header-container {
-  background-color: #3c1053;
+  background-color: var(--corporate-purple);
   color: #d0d0ce; /*Light Gray*/
-  height: 100px;
+  height: 10vh; /* Height now relative to viewport */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 2%; /* Padding now relative to parent's width */
+  cursor: default;
 }
 
 #header-container > div,
 #header-container > img {
-  min-width: 230px;
+  min-width: 15%; /* Width now relative to parent */
 }
 
 #header-menu {
@@ -67,13 +68,14 @@
 }
 
 #logo-graphic {
-  height: 175px;
-  margin-top: 10px;
+  height: 75%; /* Height now relative to parent */
+  margin-top: 2%; /* Margin now relative to parent */
 }
+
 #header-logo {
   color: #d0d0ce;
   font-family: "daggersquare";
-  font-size: 60px;
+  font-size: 4.5vw; /* Font size now relative to viewport width */
   font-weight: bold;
   text-decoration: none;
   list-style-type: none;
@@ -81,13 +83,29 @@
   letter-spacing: 2px;
   line-height: 1;
 }
-#cart-icon {
-  color: #d29f13;
-  font-size: 35px;
-}
+
+#cart-icon,
 #account-icon {
   color: #d29f13;
-  font-size: 35px;
+  background-color: var(--corporate-purple);
+  font-size: 2vw; /* Font size now relative to viewport width */
+}
+
+/* Responsive design for smaller screens */
+
+@media (max-width: 768px) {
+  #logo-graphic {
+    height: 60%; /* Reduced size for smaller screens */
+  }
+
+  #header-logo {
+    font-size: 4vw; /* Increased font size for visibility */
+  }
+
+  #cart-icon,
+  #account-icon {
+    font-size: 5vw; /* Increased icon size for visibility */
+  }
 }
 #nav-container {
   background-color: #d29f13;
@@ -104,6 +122,14 @@
   display: flex;
 }
 
+#nav-container > h4:hover {
+  cursor: pointer;
+  color: var(--corporate-purple);
+}
+
+#nav-container > h4 &:transition {
+  transform: ;
+}
 .non-user-nav {
   color: #d0d0ce;
   font-size: large;
@@ -225,6 +251,7 @@
   font-size: 18px;
   margin-top: 20px;
 }
+
 .review-btn:hover {
   transform: scale(1.1);
 }
