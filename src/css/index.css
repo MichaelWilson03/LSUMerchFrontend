@@ -128,7 +128,7 @@
 }
 
 #nav-container > h4 &:transition {
-  transform: ;
+  transform: scale(1.1);
 }
 .non-user-nav {
   color: #d0d0ce;

@@ -224,18 +224,16 @@ export default function Login() {
                 style={theme}
               />
 
-              <ThemeProvider theme={theme}>
-                <Button
-                  className="log-in"
-                  type="submit"
-                  onClick={handleRegister}
-                  color="secondary"
-                  size="large"
-                  variant="contained"
-                >
-                  Register
-                </Button>
-              </ThemeProvider>
+              <Button
+                className="log-in"
+                type="submit"
+                onClick={handleRegister}
+                color="secondary"
+                size="large"
+                variant="contained"
+              >
+                Register
+              </Button>
             </FormGroup>
           </>
         </div>
