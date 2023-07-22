@@ -1,13 +1,11 @@
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { addProductToCart, createNewCart, getProfile } from "../api";
 import { ThemeProvider } from "@mui/material/styles";
-import { Button } from "@mui/material";
+import { Button, Select, MenuItem } from "@mui/material";
 import { addToCart } from "./utils/cartFunctions";
 import "../css/allproducts.css";
-
 import { inCartToast } from "../routes/root";
-import { useEffect, useState } from "react";
 
 export default function AllProducts() {
   const { products, user, setUser, cart, setCart, token, theme } =
@@ -17,9 +15,13 @@ export default function AllProducts() {
 
   const navigate = useNavigate();
   const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     setDisplayedProducts(products);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleCategorySelect = (categoryString) => {
@@ -48,58 +50,71 @@ export default function AllProducts() {
   if (!products) {
     return <></>;
   }
+
   return (
     <div id="all-products">
-      <div className="categories-container">
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("All")}
-        >
-          All Products
-        </Button>
+      {windowWidth <= 768 ? (
+        <Select onChange={(event) => handleCategorySelect(event.target.value)}>
+          <MenuItem value="All">All Products</MenuItem>
+          <MenuItem value="Clothing">Clothing</MenuItem>
+          <MenuItem value="Accessories">Accessories</MenuItem>
+          <MenuItem value="Memorabilia">Memorabilia</MenuItem>
+          <MenuItem value="Baby">Baby</MenuItem>
+          <MenuItem value="Household">Household</MenuItem>
+          <MenuItem value="Featured">Featured</MenuItem>
+        </Select>
+      ) : (
+        <div className="categories-container">
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("All")}
+          >
+            All Products
+          </Button>
 
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("Clothing")}
-        >
-          Clothing
-        </Button>
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("Clothing")}
+          >
+            Clothing
+          </Button>
 
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("Accessories")}
-        >
-          Accessories
-        </Button>
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("Accessories")}
+          >
+            Accessories
+          </Button>
 
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("Memorabilia")}
-        >
-          Memorabilia
-        </Button>
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("Memorabilia")}
+          >
+            Memorabilia
+          </Button>
 
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("Baby")}
-        >
-          Baby
-        </Button>
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("Baby")}
+          >
+            Baby
+          </Button>
 
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("Household")}
-        >
-          Household
-        </Button>
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("Household")}
+          >
+            Household
+          </Button>
 
-        <Button
-          className="category-button"
-          onClick={() => handleCategorySelect("Featured")}
-        >
-          Featured
-        </Button>
-      </div>
+          <Button
+            className="category-button"
+            onClick={() => handleCategorySelect("Featured")}
+          >
+            Featured
+          </Button>
+        </div>
+      )}
       <div ref={productContainer} className="cards-container">
         {displayedProducts.length > 0 ? (
           displayedProducts.map((product) => (

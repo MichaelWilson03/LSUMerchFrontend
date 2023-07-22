@@ -147,7 +147,7 @@ export default function Products() {
     singleProduct();
   }, [productId]);
 
-  if (loading) {
+  if (setLoading === false) {
     return <LoadingState />;
   }
 
