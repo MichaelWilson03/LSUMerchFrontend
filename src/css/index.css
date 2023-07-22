@@ -47,8 +47,8 @@
 
 #header-container {
   background-color: var(--corporate-purple);
-  color: #d0d0ce; /*Light Gray*/
-  height: 10vh; /* Height now relative to viewport */
+  color: black; /*Light Gray*/
+  height: 10.5vh; /* Height now relative to viewport */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,7 +58,7 @@
 
 #header-container > div,
 #header-container > img {
-  min-width: 15%; /* Width now relative to parent */
+  min-width: 25%; /* Width now relative to parent */
 }
 
 #header-menu {
@@ -68,12 +68,13 @@
 }
 
 #logo-graphic {
-  height: 75%; /* Height now relative to parent */
+  height: 100%; /* Height now relative to parent */
   margin-top: 2%; /* Margin now relative to parent */
+  margin-bottom: 2%; /* Margin now relative to parent */
 }
 
 #header-logo {
-  color: #d0d0ce;
+  color: #d29f13;
   font-family: "daggersquare";
   font-size: 4.5vw; /* Font size now relative to viewport width */
   font-weight: bold;
@@ -86,9 +87,15 @@
 
 #cart-icon,
 #account-icon {
-  color: #d29f13;
+  /* color: #d29f13; */
   background-color: var(--corporate-purple);
-  font-size: 2vw; /* Font size now relative to viewport width */
+  font-size: 3vw; /* Font size now relative to viewport width */
+  font-weight: bold;
+  text-decoration: none;
+  list-style-type: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
 }
 
 /* Responsive design for smaller screens */
@@ -167,7 +174,7 @@
 .user-nav > div {
   min-width: 270px;
   text-align: center;
-  color: #3c1053;
+  /* color: #3c1053; */
 }
 
 .non-user-nav > div:hover,

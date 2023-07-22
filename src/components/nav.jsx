@@ -141,6 +141,7 @@ const Nav = ({ setToken, setUser, topOfHome }) => {
 
               <ListItemButton
                 onClick={() => navigate("/all-products")}
+                onSubmit={() => navigate("/all-products")}
                 sx={{
                   cursor: "pointer",
                   "&:hover": {

@@ -50,7 +50,7 @@
 
 .tigersden-banner > div {
   position: absolute;
-  bottom: 50px;
+  bottom: 10%;
   width: 100%;
   text-align: center;
 }
@@ -59,13 +59,26 @@
   border: 3px solid white;
   color: white;
   cursor: pointer;
-  font-family: Archivo Narrow, Arial, Helvetica, sans-serif;
-  font-size: 32px;
+  font-size: 3vw; /* Font size now relative to viewport width */
   font-weight: bold;
-  padding: 10px;
+  text-decoration: none;
+  list-style-type: none;
+  /* text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1; */
   border-radius: 20px;
-  box-shadow: 3px 3px 5px #8c57f3;
-  text-shadow: 3px 3px 5px #8c57f3;
+  box-shadow: 3px 3px 5px #3c1053;
+  text-shadow: 3px 3px 5px #3c1053;
+  padding: 0.5dvh 0.5dvw;
+
+  text-align: center;
+
+  /* object-fit: contain; */
+  object-position: bottom;
+  /* align-items: center; */
+  transform: translate(-50%, -50%);
+
+  margin: 1vh 0.5dvw;
 }
 
 .tigersden-banner span:hover {

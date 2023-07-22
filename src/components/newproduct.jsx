@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { createProduct, getAllProducts } from "../api";
-import ImageUpload from "./imageUpload";
+// import ImageUpload from "./imageUpload";
 
 import "../css/productForm.css";
 import { Button } from "@mui/material";
@@ -133,7 +133,13 @@ const NewProduct = () => {
             />
           </div>
         </label>
-        <ImageUpload imageURL={imageURL} setImageURL={setImageURL} />
+        <input
+          className="new-product-input"
+          placeholder="Image URL"
+          onChange={(event) => setImageURL(event.target.value)}
+          value={imageURL}
+        />
+        {/* <ImageUpload imageURL={imageURL} setImageURL={setImageURL} /> */}
         <Button className="new-product-button" type="submit" theme={theme}>
           Create Product
         </Button>

@@ -1,41 +1,51 @@
-.account-page {
-  padding: 20px;
-  margin-bottom: 20px;
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 0 10px #ccc;
-}
+/* .account-page {
+  background-color: #f4f4f4;
+  width: max-content;
+} */
 
 .admin-dashboard {
   margin-bottom: 20px;
 }
 
 .account-heading {
-  font-size: 40px;
+  font-size: 2em;
   margin-bottom: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.account-details {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
 }
 
 .account-details p {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 1.2em;
 }
 
 .account-details span {
   font-weight: bold;
 }
 
-.order-history {
-  width: 100%;
+.order-history,
+.my-reviews {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ccc;
 }
 
 .order-history h1,
 .my-reviews h1 {
-  font-size: 20px;
+  font-size: 1.5em;
   margin-bottom: 10px;
+  color: #333;
+  font-weight: 700;
 }
 
 .order,
@@ -55,13 +65,12 @@
 .review-rating span,
 .review-date span {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.2em;
   color: #000;
-  text-transform: uppercase;
 }
 
 .review-product {
-  font-size: 20px;
+  font-size: 1.2em;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -69,7 +78,7 @@
 }
 
 .review-message {
-  font-size: 20px;
+  font-size: 1.2em;
   margin-top: 10px;
 }
 
@@ -84,34 +93,42 @@
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: bold;
-  color: #000;
+  color: #fff;
+  /* background-color: #ff0000; */
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.3s;
+  padding: 10px 20px;
+  border-radius: 5px;
   text-decoration: none;
-  list-style-type: none;
-  color: black;
   text-align: center;
+  display: inline-block;
 }
 
-/* Media queries for smaller screens */
 @media (max-width: 768px) {
   .account-page {
     padding: 10px;
-    box-shadow: none;
   }
 
   .account-heading {
-    font-size: 30px;
+    font-size: 1.5em;
   }
 
-  .account-details p {
-    font-size: 16px;
+  .account-details p,
+  .order-id span,
+  .order-status span,
+  .product-quantity span,
+  .order-price span,
+  .review-rating span,
+  .review-date span,
+  .review-product,
+  .review-message {
+    font-size: 1em;
   }
 
   .order-history h1,
   .my-reviews h1 {
-    font-size: 18px;
+    font-size: 1.2em;
   }
 
   .order,
@@ -119,24 +136,8 @@
     padding: 10px;
   }
 
-  .order-id span,
-  .order-status span,
-  .product-quantity span,
-  .order-price span,
-  .review-rating span,
-  .review-date span {
-    font-size: 16px;
-  }
-
-  .review-product {
-    font-size: 16px;
-  }
-
-  .review-message {
-    font-size: 16px;
-  }
-
   .logout-button {
-    font-size: 16px;
+    font-size: 1em;
+    padding: 10px 20px;
   }
 }
